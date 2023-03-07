@@ -84,8 +84,7 @@ func CreateTestObjects(s3action actions.BucketActions, prefix, suffix []string) 
 	}
 }
 
-// CreateHashMap lists and sorts objects based on LastModified Date.
-// It takes x as a parameter and returns the most recent x deployments.
+// CreateHashMap returns a map of prefixes sorted by Last Modified date.
 func CreateHashMap(objects []types.Object) map[string]time.Time {
 	keyMap := make(map[string]time.Time)
 	// creates a hash map of prefixes with most recent modified date
