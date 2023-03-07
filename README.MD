@@ -6,8 +6,9 @@ If a deployment is older than X, we will delete the entire folder.
 
 ## Questions
 
-1. Where should we run this script?
-   This script should be run locally but can run anywhere with access to the Amazon API and the following Environment Variables:
+-  Where should we run this script?
+
+  This script should be run locally but can run anywhere with access to the Amazon API and the following Environment Variables:
 
 ```sh
 AWS_ACCESS_KEY_ID
@@ -21,9 +22,9 @@ AWS_ENDPOINT
 S3_BUCKET
 ```
 
-**NOTE**: The `AWS_REGION`, `AWS_ENDPOINT`, and `S3_BUCKET` automatically default to presets in the `main.go` program.
+**NOTE**: The `AWS_REGION`, `AWS_ENDPOINT`, and `S3_BUCKET` automatically default to presets in the `findDeployments.go` program.
 
-2. How should we test the script before running it production?
+- How should we test the script before running it production?
 
 Please use localstack to setup a test S3 environment. Uncomment lines 168-170 to create test objects.
 Set the following as your environment variables to test against the localstack.
@@ -34,7 +35,7 @@ AWS_SECRET_ACCESS_KEY=test
 AWS_DEFAULT_REGION=us-east-1
 ```
 
-3. If we want to add an additional requirement of deleting deploys older than 30 days while keeping X deployments. What additional changes would you need to make in the script?
+- If we want to add an additional requirement of deleting deploys older than 30 days while keeping X deployments. What additional changes would you need to make in the script?
 
 I would have to rework the script, so instead of comparing the prefix map based on the deployment count, I would have to compare it to the last modified date before 30 days, only if the number of pairs left is larger than X(deployment count).
 
